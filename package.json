@@ -1,0 +1,13 @@
+{
+	"private": true,
+	"name": "@derhuerst/npm-git-bug-1",
+	"version": "1.0.0",
+	"main": "index.js",
+	"repository": "derhuerst/npm-git-bug-1",
+	"author": "Jannis R <mail@jannisr.de>",
+	"license": "ISC",
+	"dependencies": {
+		"@derhuerst/npm-git-bug-2": "github:derhuerst/npm-git-bug-2#1.0.0",
+		"async": "github:caolan/async"
+	}
+}
