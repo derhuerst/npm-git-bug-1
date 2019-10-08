@@ -7,7 +7,7 @@
 	"author": "Jannis R <mail@jannisr.de>",
 	"license": "ISC",
 	"dependencies": {
-		"@derhuerst/npm-git-bug-2": "github:derhuerst/npm-git-bug-2#1.0.0",
+		"@derhuerst/npm-git-bug-2": "github:derhuerst/npm-git-bug-2#semver:^1.1.0",
 		"async": "github:caolan/async"
 	}
 }
