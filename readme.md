@@ -86,3 +86,32 @@ npm verb exit [ 0, true ]
 npm timing npm Completed in 37567ms
 npm info ok
 ```
+
+
+## `npm ls` broken with `npm@6.11.3`
+
+- `npm ci` installs all dependencies as specified in the lockfile, but `npm ls` seems not to find them.
+
+```shell
+npm --version # 6.11.3
+npm ls
+```
+
+```
+@derhuerst/npm-git-bug-1@1.0.0 /Users/j/playground/npm-git-bug-1
+├─┬ UNMET DEPENDENCY @derhuerst/npm-git-bug-2@github:derhuerst/npm-git-bug-2#52dce58e43c064469c4262371c212f76beef2135
+│ └── UNMET DEPENDENCY lodash@github:lodash/lodash#ddfd9b11a0126db2302cb70ec9973b66baec0975
+├── UNMET DEPENDENCY async@github:caolan/async#4752a792f5f9272e8db7f6035122ee9d7dd53539
+└── UNMET DEPENDENCY lodash@github:lodash/lodash#ddfd9b11a0126db2302cb70ec9973b66baec0975
+
+npm ERR! missing: async@github:caolan/async#v3.1.0, required by @derhuerst/npm-git-bug-1@1.0.0
+npm ERR! missing: lodash@github:lodash/lodash#semver:^4.17.15, required by @derhuerst/npm-git-bug-1@1.0.0
+npm ERR! missing: @derhuerst/npm-git-bug-2@github:derhuerst/npm-git-bug-2#semver:^1.1.0, required by @derhuerst/npm-git-bug-1@1.0.0
+npm ERR! extraneous: async@github:caolan/async#4752a792f5f9272e8db7f6035122ee9d7dd53539 /Users/j/playground/npm-git-bug-1/node_modules/async
+npm ERR! extraneous: lodash@github:lodash/lodash#ddfd9b11a0126db2302cb70ec9973b66baec0975 /Users/j/playground/npm-git-bug-1/node_modules/lodash
+npm ERR! missing: lodash@github:lodash/lodash#ddfd9b11a0126db2302cb70ec9973b66baec0975, required by @derhuerst/npm-git-bug-2@github:derhuerst/npm-git-bug-2#52dce58e43c064469c4262371c212f76beef2135
+```
+
+## minor annoyances
+
+- With `npm@6.11.3`, `npm ci` doesn't to a *shallow* `git clone`.
